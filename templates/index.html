@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Useless Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="float">🤖 Useless Bot</h1>
+        <form method="post" onsubmit="return showTyping()">
+            <input type="text" name="question" placeholder="Ask me anything..." required>
+            <button type="submit">Ask</button>
+        </form>
+        <div id="typing" class="typing">Typing...</div>
+        {% if answer %}
+        <div id="response" class="response">{{ answer }}</div>
+        {% endif %}
+    </div>
+
+    <script>
+        const typingDiv = document.getElementById('typing');
+        const responseDiv = document.getElementById('response');
+
+        function showTyping() {
+            typingDiv.style.display = 'block';
+            responseDiv.style.display = 'none';
+            return true;
+        }
+
+        window.onload = function () {
+            if (responseDiv) {
+                typingDiv.style.display = 'none';
+                responseDiv.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
